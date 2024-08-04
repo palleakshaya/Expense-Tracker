@@ -8,29 +8,27 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-register-page',
   standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterLink,
   ],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+  templateUrl: './register-page.component.html',
+  styleUrl: './register-page.component.scss',
 })
-export class LoginPageComponent {
+export class RegisterPageComponent {
   loginForm: FormGroup;
 
-  login() {
+  register() {
     throw new Error('Method not implemented.');
   }
 
-  constructor(public fb: FormBuilder, private router: Router) {
+  constructor(public fb: FormBuilder) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
