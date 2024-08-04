@@ -1,0 +1,31 @@
+<form (ngSubmit)="login()" class="login-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      type="email"
+      placeholder="Enter Email"
+      formControlName="email"
+    />
+    @if(email?.touched && email?.hasError('required') ) {
+    <mat-error>Email is <strong>required</strong></mat-error>
+    } @if(email?.touched && email?.hasError('email') ){
+    <mat-error> <strong>Invalid </strong> mail-id</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Enter Password"
+      formControlName="password"
+    />
+    @if(password?.touched && password?.hasError('required') ){
+    <mat-error>Poster URL is <strong>required</strong></mat-error>
+    } @if(password?.touched && password?.hasError('minlength') ){
+    <mat-error> <strong>Invalid </strong> URL</mat-error>
+    }
+  </mat-form-field>
+  <button mat-raised-button type="submit">Login</button>
+</form>
