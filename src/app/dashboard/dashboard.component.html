@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <mat-card>
+    <mat-card-title>Overview</mat-card-title>
+    <mat-card-content>
+      <div class="balance">Balance: {{ user.balance | currency }}</div>
+      <div class="recent-transactions">
+        <h3>Recent Transactions</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let transaction of recentTransactions">
+            {{ user.transaction.description }} -
+            {{ user.transaction.amount | currency }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="savings-goals">
+        <h3>Savings Goals</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let goal of savingsGoals">
+            {{ user.goal.name }} - {{ user.goal.progress | percent }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

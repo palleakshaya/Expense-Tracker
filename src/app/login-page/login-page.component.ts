@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { ExpenseService } from '../expense.service';
 
 @Component({
   selector: 'app-login-page',
@@ -24,15 +25,18 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
-  loginForm: FormGroup;
-
   login() {
     throw new Error('Method not implemented.');
   }
+  loginForm: FormGroup;
 
-  constructor(public fb: FormBuilder, private router: Router) {
+  constructor(
+    public fb: FormBuilder,
+    private router: Router,
+    public expenseService: ExpenseService
+  ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required]],
       password: [
         '',
         [
@@ -43,6 +47,19 @@ export class LoginPageComponent {
       ],
     });
   }
+  // login(): void {
+  //   this.expenseService.login(this.email, this.password).subscribe((users) => {
+  //     if (users.length > 0) {
+  //       const user = users[0];
+  //       // Store user ID in local storage or a service
+  //       localStorage.setItem('userId', user.id);
+  //       // Redirect to dashboard or another route
+  //       this.router.navigate(['/dashboard']);
+  //     } else {
+  //       alert('Invalid credentials');
+  //     }
+  //   });
+  // }
 
   get email() {
     return this.loginForm.get('email');

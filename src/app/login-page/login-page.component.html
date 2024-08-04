@@ -1,4 +1,5 @@
-<form (ngSubmit)="login()" class="login-form">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+  <h1 style="text-align: center">Login</h1>
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input
@@ -22,15 +23,25 @@
       formControlName="password"
     />
     @if(password?.touched && password?.hasError('required') ){
-    <mat-error>Poster URL is <strong>required</strong></mat-error>
+    <mat-error>Password URL is <strong>required</strong></mat-error>
     } @if(password?.touched && password?.hasError('minlength') ){
-    <mat-error> <strong>Invalid </strong> URL</mat-error>
+    <mat-error> <strong>Invalid </strong> password</mat-error>
     }
   </mat-form-field>
-  <button mat-raised-button type="submit" color="primary">Login</button>
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    routerLink="/dashboard"
+  >
+    Login
+  </button>
   <!-- <p>New User? <a href="" routerLink>Register Here</a></p> -->
   <p>
     New User?
-    <button mat-button type="submit" routerLink="">Register Here</button>
+    <a href="home/register-page">Register Here</a>
+    <!-- <button mat-button type="submit" routerLink="/login/register">
+      Register Here
+    </button> -->
   </p>
 </form>
