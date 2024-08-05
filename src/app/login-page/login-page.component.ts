@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { ExpenseService } from '../expense.service';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -31,8 +30,7 @@ export class LoginPageComponent {
   constructor(
     public fb: FormBuilder,
     private router: Router,
-    public expenseService: ExpenseService,
-    public authService: AuthService
+    public expenseService: ExpenseService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required]],
@@ -61,14 +59,13 @@ export class LoginPageComponent {
   // }
   login() {
     // Access the values from the form controls
-    const emailValue = this.email?.value;
-    const passwordValue = this.password?.value;
-
-    if (emailValue && passwordValue) {
-      this.authService.login(emailValue, passwordValue);
-    } else {
-      console.error('Email or password is not set.');
-    }
+    // const emailValue = this.email?.value;
+    // const passwordValue = this.password?.value;
+    // if (emailValue && passwordValue) {
+    //   this.authService.login(emailValue, passwordValue);
+    // } else {
+    //   console.error('Email or password is not set.');
+    // }
   }
   get email() {
     return this.loginForm.get('email');
